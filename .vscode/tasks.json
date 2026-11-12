@@ -1,0 +1,36 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "NAPS: установить зависимости",
+      "type": "process",
+      "command": "python3",
+      "windows": {"command": "cmd.exe", "args": ["/d", "/c", "call", "${workspaceFolder}\\vscode_setup.cmd"]},
+      "args": ["${workspaceFolder}/bootstrap.py", "--install-only"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": [],
+      "presentation": {"reveal": "always", "panel": "dedicated"}
+    },
+    {
+      "label": "NAPS: установить зависимости для обучения",
+      "type": "process",
+      "command": "python3",
+      "windows": {"command": "cmd.exe", "args": ["/d", "/c", "call", "${workspaceFolder}\\vscode_setup.cmd", "--with-training"]},
+      "args": ["${workspaceFolder}/bootstrap.py", "--install-only", "--with-training"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": [],
+      "presentation": {"reveal": "always", "panel": "dedicated"}
+    },
+    {
+      "label": "NAPS: запуск",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": {"command": "${workspaceFolder}/.venv/Scripts/python.exe"},
+      "args": ["${workspaceFolder}/main.py", "--device", "cpu"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": [],
+      "group": {"kind": "build", "isDefault": true},
+      "presentation": {"reveal": "always", "panel": "dedicated"}
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+.venv/
+.cache/
+outputs/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/simulations/*.npz

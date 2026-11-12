@@ -1,0 +1,48 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "NAPS: запуск с готовыми весами",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/main.py",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "linux": {"python": "${workspaceFolder}/.venv/bin/python"},
+      "osx": {"python": "${workspaceFolder}/.venv/bin/python"},
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "args": ["--mode", "pretrained", "--device", "cpu", "--debug"],
+      "env": {"PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"},
+      "preLaunchTask": "NAPS: установить зависимости",
+      "justMyCode": true
+    },
+    {
+      "name": "NAPS: повторная оценка на исходных NPZ",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/main.py",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "linux": {"python": "${workspaceFolder}/.venv/bin/python"},
+      "osx": {"python": "${workspaceFolder}/.venv/bin/python"},
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "args": ["--mode", "pretrained", "--evaluate-data", "--device", "cpu", "--debug"],
+      "env": {"PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"},
+      "preLaunchTask": "NAPS: установить зависимости"
+    },
+    {
+      "name": "NAPS: обучение новой сети и калибровка",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/main.py",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "linux": {"python": "${workspaceFolder}/.venv/bin/python"},
+      "osx": {"python": "${workspaceFolder}/.venv/bin/python"},
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "args": ["--mode", "train", "--output-dir", "outputs/train", "--device", "cpu", "--debug"],
+      "env": {"PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"},
+      "preLaunchTask": "NAPS: установить зависимости для обучения"
+    }
+  ]
+}
